@@ -1,7 +1,32 @@
-from flask import Flask
+from flask import Flask, render_template
+import mysql.connector
+
 
 app = Flask(__name__)
 
+
+#Abre a página principal, GET = pega e envia para o usuário
+@app.route("/home", methods=["get"])
+#Não precisa por get pq ele é padrão
+@app.route("/")
+def pagina_principal():
+    #Conectando no banco de dados
+    conexao = mysql.connector.connect(
+        host = "127.0.0.1",
+        port = 3306,
+        user = "root",
+        password = "root",
+        database = "onnemusic"
+    )
+    cursor = conexao.cursor(dictionary=True)
+    #Executando a consulta
+    cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero FROM musica;")
+    #Recuperando os dados e guardando
+    musicas = cursor.fetchall()
+    #Fechando a conexão
+    conexao.close()
+
+    return render_template("principal.html", musica = musicas)
 
 
 
