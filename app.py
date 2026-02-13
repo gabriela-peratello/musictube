@@ -23,35 +23,16 @@ def pagina_principal():
     cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero FROM musica;")
     #Recuperando os dados e guardando
     musicas = cursor.fetchall()
+
+    #Executando a consulta do gênero
+    cursor.execute("SELECT nome, icone, cor FROM genero")
+
+    #Recuperando os dados do gênero
+    generos = cursor.fetchall()
     #Fechando a conexão
     conexao.close()
 
-    return render_template("principal.html", musica = musicas)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return render_template("principal.html", musicas = musicas, generos = generos)
 
 
 
