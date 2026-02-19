@@ -1,42 +1,33 @@
 from flask import Flask, render_template
 import mysql.connector
+from database.conexao import conectar
+from model.genero import recuperar_generos
+from model.musica import recuperar_musicas
 
 
 app = Flask(__name__)
 
 
 #Abre a página principal, GET = pega e envia para o usuário
-@app.route("/home", methods=["get"])
+@app.route("/home", methods=["GET"])
 #Não precisa por get pq ele é padrão
-@app.route("/")
+@app.route("/")                   
 def pagina_principal():
-    #Conectando no banco de dados
-    conexao = mysql.connector.connect(
-        host = "127.0.0.1",
-        port = 3306,
-        user = "root",
-        password = "root",
-        database = "onnemusic"
-    )
-    cursor = conexao.cursor(dictionary=True)
-    #Executando a consulta
-    cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero FROM musica;")
-    #Recuperando os dados e guardando
-    musicas = cursor.fetchall()
-
-    #Executando a consulta do gênero
-    cursor.execute("SELECT nome, icone, cor FROM genero")
-
-    #Recuperando os dados do gênero
-    generos = cursor.fetchall()
-    #Fechando a conexão
-    conexao.close()
+    # Recuperando as músicas
+    musicas = recuperar_musicas()
+    # Recuperando os gêneros
+    generos = recuperar_generos()
 
     return render_template("principal.html", musicas = musicas, generos = generos)
 
-
-
-
+@app.route("/admin")
+def pagina_admin():
+    # Recuperando as músicas 
+    musicas = recuperar_musicas()
+    # Recuperando os gêneros
+    generos = recuperar_generos()
+    # Mostrando a página
+    return render_template("administracao.html", musicas = musicas, generos = generos)
 
 if __name__ == "__main__":
     app.run(debug=True)

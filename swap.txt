@@ -1,0 +1,46 @@
+APP V.0.1 -
+
+from flask import Flask, render_template
+import mysql.connector
+app = Flask(__name__)
+#Abre a página principal, GET = pega e envia para o usuário
+@app.route("/home", methods=["get"])
+#Não precisa por get pq ele é padrão
+@app.route("/")
+def pagina_principal():
+    #Conectando no banco de dados
+    conexao = mysql.connector.connect(
+        host = "127.0.0.1",
+        port = 3306,
+        user = "root",
+        password = "root",
+        database = "onnemusic"
+    )
+    cursor = conexao.cursor(dictionary=True)
+    return conexao, cursor
+    #Executando a consulta
+    cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero FROM musica;")
+    #Recuperando os dados e guardando
+    musicas = cursor.fetchall()
+    #Executando a consulta do gênero
+    cursor.execute("SELECT genero_nome, icone, cor FROM genero")
+    #Recuperando os dados do gênero
+    generos = cursor.fetchall()
+    #Fechando a conexão
+    conexao.close()
+    return render_template("principal.html", musicas = musicas, generos = generos)
+if __name__ == "__main__":
+    app.run(debug=True)
+
+    DESTRINCHAR O CÓDIGO EM ARQUIVOS DIFERENTES PARA MELHOR ORGANIZAÇÃO
+
+
+
+Acho necessário dar um choque de realidade nas pessoas, menos quando a pessoa sou eu.
+Pode 'tá se matando já? Ou 'tá cedo?
+Meu Deus do céu, parece que eu sofro muito né, 'tô me sentindo burra mesmo a cada vez que penso nisso, burra não, humilhada;
+Será que quando eu 'tiver um trabalho eu vou poder ficar escrevendo coisas assim no meu swap? Acho que não 'né, é 'foda'.
+Talvez eu seja a única que esteja focando nisso na real, o problema 'tá em mim, isso sim.
+Vou ter que apelar 'pras simpatias véi, isso sim.
+"Chat, qual simpatia faz eu esquecer........?"
+
