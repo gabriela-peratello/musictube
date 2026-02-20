@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request
 import mysql.connector
 from database.conexao import conectar
 from model.genero import recuperar_generos
-from model.musica import recuperar_musicas
+from model.musica import recuperar_musicas, salvar_musica
 
 
 app = Flask(__name__)
@@ -28,6 +28,17 @@ def pagina_admin():
     generos = recuperar_generos()
     # Mostrando a página
     return render_template("administracao.html", musicas = musicas, generos = generos)
+
+@app.route("/musica/post", methods =["POST"])
+def api_inserir_musica():
+    nome_musica = request.form.get("musicas")
+    cantor = 
+    duracao =
+    genero =
+    if salvar_musica(cantor, nome_musica):
+        return redirect("/admin")
+    else:
+        return "Erro ao adicionar música"
 
 if __name__ == "__main__":
     app.run(debug=True)
