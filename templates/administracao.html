@@ -132,13 +132,12 @@
                             <label class="label is-small">Categoria</label>
                             <div class="control is-expanded">
                                 <div class="select is-fullwidth">
-
-                                    {%for genero in generos %}
                                     <select>
-                                        <option>{{genero.nome}}</option>
+                                        <option>Selecione......</option>
+                                        {%for genero in generos %}
+                                        <option>{{genero.generos_musicas}}</option>
+                                        {% endfor %}
                                     </select>
-                                    {% endfor %}
-
                                 </div>
                             </div>
                         </div>
@@ -177,7 +176,7 @@
                             <small class="has-text-grey">{{musica.cantor}}</small>
                         </td>
                         <td class="is-family-monospace has-text-centered">{{musica.duracao}}</td>
-                        <td><span class="tag is-dark">{{musica.nome_genero}}</span></td>
+                        <td><span class="tag is-dark">{{musica.genero}}</span></td>
                         <td class="has-text-centered">
                             <span class="tag is-success is-light">ATIVO</span>
                         </td>

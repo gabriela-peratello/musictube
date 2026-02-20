@@ -15,3 +15,6 @@ def recuperar_musicas():
     conexao.close()
 
     return musicas
+
+def salvar_musica(cantor:str, nome_musica:str, duracao:str, url_imagem:str, genero:str) -> bool:
+    """ Essa função tem como intuito de adicionar uma música."""
