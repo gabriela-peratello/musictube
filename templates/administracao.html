@@ -93,13 +93,13 @@
             <h2 class="title is-5 mb-5">
                 <i class="fa-solid fa-circle-plus has-text-success mr-2"></i> Nova Música
             </h2>
-            <form>
+            <form action="/musica/post" method="POST">
                 <div class="columns is-multiline">
                     <div class="column is-4">
                         <div class="field">
                             <label class="label is-small">Título da Música</label>
                             <div class="control">
-                                <input class="input" name = musicas type="text" placeholder="Ex: Starboy">
+                                <input class="input" name="musicas" type="text" placeholder="Ex: Starboy">
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="field">
                             <label class="label is-small">Cantor / Banda</label>
                             <div class="control">
-                                <input class="input" name= musicas type="text" placeholder="Ex: The Weeknd">
+                                <input class="input" name="cantor" type="text" placeholder="Ex: The Weeknd">
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         <div class="field">
                             <label class="label is-small">Duração</label>
                             <div class="control">
-                                <input class="input" name= musicas type="text" placeholder="Ex: 03:50">
+                                <input class="input" name="duracao" type="text" placeholder="Ex: 03:50">
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                         <div class="field">
                             <label class="label is-small">URL da Imagem de Capa</label>
                             <div class="control">
-                                <input class="input" name="musicas" type="text" placeholder="https://...">
+                                <input class="input" name="url_imagem" type="text" placeholder="https://...">
                             </div>
                         </div>
                     </div>
@@ -132,10 +132,10 @@
                             <label class="label is-small">Categoria</label>
                             <div class="control is-expanded">
                                 <div class="select is-fullwidth">
-                                    <select>
-                                        <option>Selecione......</option>
-                                        {%for genero in generos %}
-                                        <option value="{{genero.nome}}">{{genero.generos_musicas}}</option>
+                                    <select name="genero">
+                                        <option value="">Selecione...</option>
+                                        {% for genero in genero %}
+                                            <option value="{{ genero.genero }}">{{ genero.genero }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>

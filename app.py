@@ -29,13 +29,17 @@ def pagina_admin():
     # Mostrando a página
     return render_template("administracao.html", musicas = musicas, generos = generos)
 
-@app.route("/musica/post", methods =["POST"])
+@app.route("/musica/post", methods=["POST"])
 def api_inserir_musica():
+    # Pegando os valores do formulário
     nome_musica = request.form.get("musicas")
-    cantor = 
-    duracao =
-    genero =
-    if salvar_musica(cantor, nome_musica):
+    cantor = request.form.get("cantor")
+    duracao = request.form.get("duracao")
+    imagem = request.form.get("url_imagem")
+    genero = request.form.get("genero")
+
+    # Salvando a música no banco de dados
+    if salvar_musica(cantor, nome_musica, duracao, imagem, genero):
         return redirect("/admin")
     else:
         return "Erro ao adicionar música"
