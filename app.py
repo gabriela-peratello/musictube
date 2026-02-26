@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, request
 import mysql.connector
 from database.conexao import conectar
 from model.genero import recuperar_generos
-from model.musica import recuperar_musicas, salvar_musica
+from model.musica import apagar_musica, recuperar_musicas, salvar_musica
 
 
 app = Flask(__name__)
@@ -43,6 +43,19 @@ def api_inserir_musica():
         return redirect("/admin")
     else:
         return "Erro ao adicionar música"
+    
+
+@app.route("/musica/excluir/<codigo>")
+def deletar_musica (codigo):
+    apagar_musica (codigo)
+    return redirect("/administracao")
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+    

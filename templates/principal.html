@@ -132,12 +132,9 @@
             <aside class="column is-2 is-hidden-mobile">
                 <div class="menu">
                     <p class="menu-label">Categorias</p>
-                    {%for genero in generos %}
-                    <ul class="menu-list">
-                        <li><a href="#"><span class="icon"><i class="fa-solid fa-compact-disc"></i></span> {{genero.generos_musicas}}</a></li>
-                    </ul>
+                    {% for genero in generos %}
+                    <li><a href="#">{{ genero[0] }}</a></li>
                     {% endfor %}
-
                 </div>
             </aside>
 
@@ -169,7 +166,7 @@
                     {% endfor %}
                 </div>
 
-                
+
             </main>
         </div>
     </div>

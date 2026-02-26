@@ -134,16 +134,17 @@
                                 <div class="select is-fullwidth">
                                     <select name="genero">
                                         <option value="">Selecione...</option>
-                                        {% for genero in genero %}
-                                            <option value="{{ genero.genero }}">{{ genero.genero }}</option>
+                                        {% for genero in generos %}
+                                            <option value="{{ genero[0] }}">{{ genero[0] }}</option>
                                         {% endfor %}
+                                    </select>
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit"  class="button is-link is-fullwidth mt-4">
+                <button type="submit" class="button is-link is-fullwidth mt-4">
                     <strong><i class="fa-solid fa-save mr-2"></i> Salvar Música</strong>
                 </button>
             </form>
@@ -178,16 +179,16 @@
                         <td class="is-family-monospace has-text-centered">{{musica.duracao}}</td>
                         <td><span class="tag is-dark">{{musica.genero}}</span></td>
                         <td class="has-text-centered">
-                            <span class="tag is-success is-light">ATIVO</span>
+                            <span class="tag is-success is-light">{{musica.ativo}}</span>
                         </td>
                         <td class="has-text-right px-5">
                             <div class="buttons is-right">
                                 <button class="button is-small is-warning is-light" title="Desativar">
                                     <i class="fa-solid fa-eye-slash"></i>
                                 </button>
-                                <button class="button is-small is-danger is-light" title="Excluir">
+                               <a href="/musica/excluir/{{musica.codigo}}" class="button is-small is-danger is-light" title="Excluir">
                                     <i class="fa-solid fa-trash"></i>
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -215,6 +216,7 @@
                                 <button class="button is-small is-warning is-light" title="Desativar">
                                     <i class="fa-solid fa-eye-slash"></i>
                                 </button>
+
                                 <button class="button is-small is-danger is-light" title="Excluir">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
