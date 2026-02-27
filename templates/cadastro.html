@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+            background-color: rgb(133, 131, 125);
+            
+        }
+
+       
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 20px; 
+        }
+
+        .container-login {
+            display: flex;
+            background-color: rgb(82, 82, 74);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.575);
+        }
+
+        .titulo {
+           
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(82, 82, 74);
+            border-radius: 20px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.658);
+            color: aliceblue;
+        }
+
+        .sub{
+           
+            font-size: 1rem;
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(82, 82, 74);
+            border-radius: 20px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.705);
+            color: aliceblue;
+        }
+
+        .botao{
+            border-radius: 30px;
+            padding: 10px;
+            background-color: rgb(85, 80, 80);
+            color: white;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            border:rgb(150, 145, 85);
+            font-size: large;
+        }
+
+        .textinho{
+            background-color: rgb(85, 80, 80);
+            border-radius: 15px;
+            border: rgb(150, 145, 85); 
+            padding: 10px;
+            margin: 5px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);;
+        }
+
+        .usuario{
+            color: aliceblue;
+            font-size: large;
+        }
+
+        .senha{
+            color: aliceblue;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Criamos um "wrapper" para empilhar o H1 e o Form -->
+    <div class="wrapper">
+        <h1 class="titulo">Faça o login para acessar a área de administradores.</h1>
+        <p class="sub">Possui um cadastro? Entre!</p>
+        
+        <div class="container-login">
+            <form action="/cadastro" method="post">
+                <div class="usuario">
+                    <label>Usuário</label><br>
+                    <input id="usuario" name="usuario" type="text" class="textinho">
+                </div><br>
+                <div class="senha">
+                    <label>Senha</label><br>
+                    <input id="senha" name="senha" type="password" class="textinho">
+                </div><br>
+                <button type="submit" style="width: 100%;" class="botao">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

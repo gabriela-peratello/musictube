@@ -2,12 +2,17 @@ from database.conexao import conectar
 
 
 
-def recuperar_musicas():
+def recuperar_musicas(ativos:bool=False):
     # Passo 1 e 2 realizados
     conexao, cursor = conectar()
 
-    #Executando a consulta
-    cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero, ativo FROM musica;")
+    if ativos ==False:
+        #Executando a consulta
+        cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero, ativo FROM musica;")
+    else:
+        cursor.execute("SELECT codigo, cantor, duracao, nome, url_capa, genero, ativo FROM musica WHERE ativo = 1;")
+
+
     #Recuperando os dados e guardando
     musicas = cursor.fetchall()
 
@@ -57,5 +62,8 @@ def apagar_musica(codigo:int) -> bool:
         return False
 
 
-def ativar_musica():
-    conexao, cursor = conectar()
+def status_musica(ativo, codigo):
+    conexao, cursor = conectar() 
+    cursor.execute("UPDATE musica SET ativo = %s WHERE codigo = %s", [ativo, codigo])
+    conexao.commit()
+    conexao.close()
