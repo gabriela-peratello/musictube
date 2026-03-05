@@ -1,100 +1,111 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            font-family: sans-serif;
-            background-color: rgb(133, 131, 125);
-            
-        }
+       body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1a1a1a; /* Preto fosco */
+    }
 
-       
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            gap: 20px; 
-        }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        gap: 20px; 
+    }
 
-        .container-login {
-            display: flex;
-            background-color: rgb(82, 82, 74);
-            padding: 50px;
-            border-radius: 30px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.575);
-        }
+    .titulo {
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 15px 25px;
+        background-color: #333333; /* Cinza mediano */
+        border-radius: 20px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+        color: #eeeeee; /* Cinza quase branco */
+    }
 
-        .titulo {
-           
-            font-size: 1.5rem;
-            text-align: center;
-            padding: 20px;
-            background-color: rgb(82, 82, 74);
-            border-radius: 20px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.658);
-            color: aliceblue;
-        }
+    .container-login {
+        display: flex;
+        background-color: #333333; /* Cinza mediano */
+        padding: 40px;
+        border-radius: 30px;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
+    }
 
-        .sub{
-           
-            font-size: 1rem;
-            text-align: center;
-            padding: 20px;
-            background-color: rgb(82, 82, 74);
-            border-radius: 20px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.705);
-            color: aliceblue;
-        }
+    .usuario, .senha {
+        color: #cccccc; /* Cinza claro */
+        font-size: 1rem;
+        font-weight: bold;
+    }
 
-        .botao{
-            border-radius: 30px;
-            padding: 10px;
-            background-color: rgb(85, 80, 80);
-            color: white;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-            border:rgb(150, 145, 85);
-            font-size: large;
-        }
+    .textinho {
+        background-color: #444444; /* Cinza destaque */
+        border-radius: 12px;
+        border: 1px solid #555; 
+        padding: 12px;
+        margin-top: 8px;
+        color: white;
+        box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        .textinho{
-            background-color: rgb(85, 80, 80);
-            border-radius: 15px;
-            border: rgb(150, 145, 85); 
-            padding: 10px;
-            margin: 5px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);;
-        }
+    .textinho:focus {
+        outline: none;
+        border-color: #777;
+        background-color: #4a4a4a;
+    }
 
-        .usuario{
-            color: aliceblue;
-            font-size: large;
-        }
+    .botao {
+        border-radius: 30px;
+        padding: 12px;
+        background-color: #555555;
+        color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-        .senha{
-            color: aliceblue;
-            font-size: large;
-        }
+    .botao:hover {
+        background-color: #777777;
+        transform: translateY(-2px);
+    }
+
+    .botao:active {
+        transform: translateY(0);
+    }
     </style>
 </head>
 <body>
 
     <!-- Criamos um "wrapper" para empilhar o H1 e o Form -->
     <div class="wrapper">
-        <h1 class="titulo">Faça o login para acessar a área de administradores.</h1>
-        <p class="sub">Possui um cadastro? Entre!</p>
+        <h1 class="titulo">Faça seu login para entrar</h1>
+        
         
         <div class="container-login">
-            <form action="/cadastro" method="post">
+            <form action="/cadastro/post" method="post">
                 <div class="usuario">
                     <label>Usuário</label><br>
                     <input id="usuario" name="usuario" type="text" class="textinho">
@@ -108,5 +119,7 @@
         </div>
     </div>
 
+</body>
+</html>
 </body>
 </html>

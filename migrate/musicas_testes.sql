@@ -1,7 +1,7 @@
 USE onnemusic;
 
 INSERT INTO `onnemusic`.`genero`
-(`generos_musicas`,
+(`genero`,
 `icone`,
 `cor`)
 VALUES

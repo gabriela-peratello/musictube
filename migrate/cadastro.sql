@@ -1,0 +1,6 @@
+USE onnemusic;
+
+CREATE TABLE IF NOT EXISTS cadastro (
+	usuario VARCHAR(200) UNIQUE NOT NULL PRIMARY KEY,
+    senha VARCHAR(100)
+);

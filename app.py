@@ -3,6 +3,7 @@ import mysql.connector
 from database.conexao import conectar
 from model.genero import recuperar_generos
 from model.musica import apagar_musica, recuperar_musicas, salvar_musica, status_musica
+from model.usuario import cadastrar
 
 
 app = Flask(__name__)
@@ -55,10 +56,20 @@ def ativar_musica(ativar, codigo):
     status_musica(ativar, codigo)
     return redirect("/admin")
 
-@app.route("/cadastro", methods=["GET"])
-def cadastro():
+@app.route("/cadastro")
+def pag():
     return render_template("cadastro.html")
 
+
+@app.route("/cadastro/post", methods=["POST"])
+def por_cadastrar():
+   usuario = request.form.get("usuario")
+   senha = request.form.get("senha")
+
+   if cadastrar(usuario, senha):
+       return redirect("/admin")
+   else:
+       return "<h1> Erro ao cadastrar. Tente novamente. </h1>"
 
 
 if __name__ == "__main__":
