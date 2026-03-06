@@ -1,4 +1,4 @@
-APP V.0.1 -
+                          APP VERSÃO 0.1
 
 from flask import Flask, render_template
 import mysql.connector
@@ -35,12 +35,4 @@ if __name__ == "__main__":
     DESTRINCHAR O CÓDIGO EM ARQUIVOS DIFERENTES PARA MELHOR ORGANIZAÇÃO
 
 
-
-Acho necessário dar um choque de realidade nas pessoas, menos quando a pessoa sou eu.
-Pode 'tá se matando já? Ou 'tá cedo?
-Meu Deus do céu, parece que eu sofro muito né, 'tô me sentindo burra mesmo a cada vez que penso nisso, burra não, humilhada;
-Será que quando eu 'tiver um trabalho eu vou poder ficar escrevendo coisas assim no meu swap? Acho que não 'né, é 'foda'.
-Talvez eu seja a única que esteja focando nisso na real, o problema 'tá em mim, isso sim.
-Vou ter que apelar 'pras simpatias véi, isso sim.
-"Chat, qual simpatia faz eu esquecer........?"
-
+CONECTAR -> Fazer a conexão (5 PASSOS) para se conectar ao banco de dados

@@ -17,3 +17,5 @@ def cadastrar(usuario, senha):
     except:
         return False
 
+
+

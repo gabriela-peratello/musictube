@@ -4,6 +4,7 @@ from database.conexao import conectar
 from model.genero import recuperar_generos
 from model.musica import apagar_musica, recuperar_musicas, salvar_musica, status_musica
 from model.usuario import cadastrar
+from model.usuario_model import verificar_usuario
 
 
 app = Flask(__name__)
@@ -70,7 +71,18 @@ def por_cadastrar():
        return redirect("/admin")
    else:
        return "<h1> Erro ao cadastrar. Tente novamente. </h1>"
+   
+@app.route("/login", methods = ["GET", "POST"])
+def logar():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
 
+    usuario = verificar_usuario(usuario, senha)
+
+    if usuario and senha:
+        return redirect ("/admin")
+    else:
+        return redirect ("/cadastro")
 
 if __name__ == "__main__":
     app.run(debug=True)
