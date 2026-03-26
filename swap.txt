@@ -36,3 +36,7 @@ if __name__ == "__main__":
 
 
 CONECTAR -> Fazer a conexão (5 PASSOS) para se conectar ao banco de dados
+
+
+
+

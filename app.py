@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session
 import mysql.connector
 from database.conexao import conectar
 from model.genero import recuperar_generos
@@ -85,9 +85,11 @@ def logar():
 
     if usuario:
         session["usuario_logado"] = usuario
+        flash(f"Seja bem-vindo, {usuario.nome}")
         return redirect ("/admin")
     else:
-        return redirect ("/cadastro")
+        flash("Usuário ou senha iválidos.", "danger")
+        return redirect("/login")
 
 if __name__ == "__main__":
     app.run(debug=True)
