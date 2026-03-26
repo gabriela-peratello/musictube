@@ -1,6 +1,6 @@
 from database.conexao import conectar
 
-# Verifica se há cadastro e se estiver, retorna os dados do usuário selecionado
+# Verifica se há cadastro e se tiver, retorna os dados do usuário selecionado
 
 def verificar_usuario(usuario:str, senha:str):
     conexao, cursor = conectar()
@@ -9,7 +9,7 @@ def verificar_usuario(usuario:str, senha:str):
                     WHERE usuario = %s AND senha = %s
                    """, [usuario, senha]) 
     usuario = cursor.fetchone()
-    conexao.commit()
+    
     conexao.close()
     return usuario 
 

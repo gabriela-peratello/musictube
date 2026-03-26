@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, session
 import mysql.connector
 from database.conexao import conectar
 from model.genero import recuperar_generos
@@ -8,6 +8,8 @@ from model.usuario_model import verificar_usuario
 
 
 app = Flask(__name__)
+
+app.secret_key = "senhaMuitoBemPensada"
 
 
 #Abre a página principal, GET = pega e envia para o usuário
@@ -24,6 +26,8 @@ def pagina_principal():
 
 @app.route("/admin")
 def pagina_admin():
+    if "usuario-logado" not in session:
+        return redirect ("/login")
     # Recuperando as músicas 
     musicas = recuperar_musicas()
     # Recuperando os gêneros
@@ -79,7 +83,8 @@ def logar():
 
     usuario = verificar_usuario(usuario, senha)
 
-    if usuario and senha:
+    if usuario:
+        session["usuario_logado"] = usuario
         return redirect ("/admin")
     else:
         return redirect ("/cadastro")
